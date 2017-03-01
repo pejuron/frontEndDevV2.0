@@ -15,10 +15,17 @@ $defaultPadding: 5px 5px;
   padding: $defaultPadding;
 }
 
-@mixin section-box( $float,$width ){
+@mixin section-box( $float, $width ) {
   @include inside-box(green,2px);
   float: $float;
   width: $width;
+}
+
+@mixin paragraph-aside-box ( $float, $width ) {
+  @include inside-box( darken(blue,20%),1px );
+  float: $float;
+  width: $width;
+  padding: 12% 0;
 }
 
 div {
@@ -36,23 +43,30 @@ div {
     nav {
       border: 1px solid darkcyan;
       margin: 5px;
-      padding: 240px 5px;
+      padding: 70% 5%;
     }
   }
   #rightSection {
-    @include section-box(right,66%);
+    @include section-box( right,68% );
+    height: 60%;
+    header {
+      margin-top: 10px;
+    }
+    #firstArticle {
+      @include inside-box( darken( green,10% ),2px );
+      p {
+        @include inside-box( darken(blue,30%), 1px );
+      }
+
+    }
+    #secondArticle {
+      @include inside-box( lighten( green,10% ), 2px );
+      #paragraphSecondArticle {
+        @include paragraph-aside-box( left, 64%);
+              }
+      #asideSecondArticle {
+        @include paragraph-aside-box( right, 33%);
+      }
+    }
   }
-}
-
-#secondArticle p {
-  float: left;
-  width: 65%;
-}
-
-#asideContainer {
-  border: 2px solid black;
-  float: right;
-  padding: 10% 0%;
-  margin: 2%;
-  width: 26%
 }
