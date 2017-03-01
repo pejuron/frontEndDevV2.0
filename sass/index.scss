@@ -1,0 +1,58 @@
+$defaultMargin: 5px 5px;
+$defaultPadding: 5px 5px;
+
+@mixin default-box( $color, $border ) {
+  border: $border solid $color;
+  clear: both;
+  display: block;
+  margin: $defaultMargin;
+  padding: $defaultPadding;
+}
+
+@mixin inside-box( $color, $border ) {
+  border: $border solid $color;
+  margin: $defaultMargin;
+  padding: $defaultPadding;
+}
+
+@mixin section-box( $float,$width ){
+  @include inside-box(green,2px);
+  float: $float;
+  width: $width;
+}
+
+div {
+  text-align: center;
+  background-color: azure;
+  header, footer {
+    @include default-box(blue, 2px);
+  }
+  nav {
+    border: 1px solid darkcyan;
+    margin-top: 10px;
+  }
+  #leftSection {
+    @include section-box(left,28%);
+    nav {
+      border: 1px solid darkcyan;
+      margin: 5px;
+      padding: 240px 5px;
+    }
+  }
+  #rightSection {
+    @include section-box(right,66%);
+  }
+}
+
+#secondArticle p {
+  float: left;
+  width: 65%;
+}
+
+#asideContainer {
+  border: 2px solid black;
+  float: right;
+  padding: 10% 0%;
+  margin: 2%;
+  width: 26%
+}
